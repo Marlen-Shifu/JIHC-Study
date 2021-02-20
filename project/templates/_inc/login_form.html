@@ -1,0 +1,10 @@
+<form class="register_panel active" data-index="0" method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ login_form }}
+    <!--<label class="register_labelname" for="email">EMAIL</label>
+    <input class="register_inputname" type="email" placeholder="Email">
+    <label class="signup_labelname" for="fullname">PASSWORD <a href="#!">(Forgot password?)</a></label>
+    <input class="signup_inputname" type="password" placeholder="Password">-->
+    <input class="register_btn" type="submit" value="Войти" />
+    <a class="register_linktext" href="#!">By signing up to create an account I accept iCourses’ Terms of Use and Privacy Policy</a>
+</form>

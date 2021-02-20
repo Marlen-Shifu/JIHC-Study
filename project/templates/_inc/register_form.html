@@ -1,0 +1,20 @@
+<form class="register_panel" data-index="1" method="post" action="{% url 'register' %}">
+    {% csrf_token %}
+    <label>{{ registration_form.username.label }}:</label>
+    {{ registration_form.username }}
+    <label>{{ registration_form.email.label }}:</label>
+    {{ registration_form.email }}
+    <label>{{ registration_form.password1.label }}:</label>
+    {{ registration_form.password1 }}
+    <label>{{ registration_form.password2.label }}:</label>
+    {{ registration_form.password2 }}
+    {{ registration_form.errors }}
+    <!--<label class="register_labelname" for="fullname">FULL NAME</label>
+    <input class="register_inputname" type="text" placeholder="Full Name">
+    <label class="register_labelname" for="email">EMAIL</label>
+    <input class="register_inputname" type="email" placeholder="Email">
+    <label class="register_labelname" for="fullname">PASSWORD <span>(Between 8-72 characters)</span></label>
+    <input class="register_inputname" type="password" placeholder="Password">-->
+    <input class="register_btn" type="submit" value="Зарегистрироваться" />
+    <a class="register_linktext" href="#!">By signing up to create an account I accept iCourses’ Terms of Use and Privacy Policy</a>
+</form>

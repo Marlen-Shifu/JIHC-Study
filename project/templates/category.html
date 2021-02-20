@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directions of {{ directions.first.category }}</title>
+</head>
+<body>
+    <h1>You look directions of {{ directions.first.category }}</h1>
+    {% for direction in directions %}
+    <p><a href="{% url 'direction' direction.pk %}">{{ direction.title }}</a></p>
+    {% endfor %}
+</body>
+</html>

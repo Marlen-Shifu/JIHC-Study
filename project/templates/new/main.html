@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+        {% block content %}
+        <!--HEADER START-->
+          <header class="header">
+          <div class="container">
+            <div class="header_content">
+              <div class="header_left">
+                <h1>Онлайн курсы <br> в одном месте</h1>
+                <p>Развивайте свою карьеру. Получите доступ <br> к нашим высококачественным онлайн-курсам</p>
+                <div class="header_register_registration-border">
+                  <a class="header_register_registration" href="courses.html">К курсам</a>
+                </div>
+              </div>
+              <div class="header_right">
+                <img src="{% static 'img/header_bq2.png' %}" alt="">
+              </div>
+            </div>
+          </div>
+          </header>
+    <!--HEADER END-->
+
+        <!--HEADER COURSERS START-->
+        <section class="header_coursers">
+          <div class="container">
+            <div class="header_coursers_title">
+              Достигай своих целей с iCourses
+            </div>
+            <div class="header_coursers-content">
+              <div class="header_coursers-item">
+                  <img src="{% static 'img/courseicon.svg' %}" alt="">
+                  <h3>Учись новейшим <br> навыкам</h3>
+                  <p>как Маркетинг,<br> Web-дизайн, Python и <br> многое другое.</p>
+              </div>
+              <div class="header_coursers-item">
+                  <img src="{% static 'img/teachericon.svg' %}" alt="">
+                  <h3>Подготовься <br> к карьере</h3>
+                  <p>в высоко <br> востребованных <br> областях, как IT, SММ.</p>
+              </div>
+              <div class="header_coursers-item">
+                  <img src="{% static 'img/Diplomicon.svg' %}" alt="">
+                  <h3>Получи<br> сертификат</h3>
+                  <p>из лучших учителей <br> в области IT и <br> многого другого.</p>
+              </div>
+              <div class="header_coursers-item">
+                  <img src="{% static 'img/organizationicon.svg' %}" alt="">
+                  <h3>Повышайте <br> квалификацию </h3>
+                  <p>с программами <br> обучения и развития <br> по требованию</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--HEADER COURSERS END-->
+        {% endblock %}

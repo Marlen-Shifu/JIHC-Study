@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+	{% block content %}
+	<section class="bread">
+		<div class="container">
+			<div class="bread">
+				<a href="{% url 'home' %}">Главная страница</a>
+				<i class="fas fa-angle-right"></i>
+				<a href="{% url 'category' courses.first.direction.category.pk %}">{{ courses.first.direction.category }}</a>
+			</div>
+		</div>
+	</section>
+	<section class="courses__web">
+		<div class="container">
+			<div class="courses__popular">
+				<div class="courses__popular_title">
+					<h2>{{ courses.first.direction.category }}</h2>
+				</div>
+				<div class="courses__popular__items">
+					{% for course in courses %}
+					<div class="course__item">
+						<div class="course__image">
+							<img src="{{ course.photo.url }}" alt="" width="100">
+						</div>
+						<div class="course__info">
+							<div class="course__text">
+								<div class="course__name">
+									<h2>{{ course.title }}</h2>
+									<h4>{{ course.direction }}</h4>
+									<p>{{ course.description }}</p>
+								</div>
+								<div class="course__rating">
+									<img src="{% static 'img/rating.png' %}" alt="">
+								</div>
+							</div>
+							<div class="course__about">
+								<div class="course__contain">
+									<p><i class="far fa-clock"></i>{{ course.duration }}</p>
+									<p><i class="far fa-play-circle"></i>{{ course.lesson_set.count }} урок(ов)</p>
+									<p><i class="fas fa-globe"></i>{{ course.language }}</p>
+									<p><i class="far fa-user"></i>{{ course.author }}</p>
+								</div>
+								<div class="course__btn">
+									<a href="{% url 'course' course.pk %}">Посмотреть</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endblock %}

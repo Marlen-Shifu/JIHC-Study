@@ -1,0 +1,141 @@
+{% load static %}
+{% load get_categories %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCoursers</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+  />
+</head>
+<body>
+
+        <!--NAVBAR START-->
+        <nav class="nav">
+            <div class="container">
+              <div class="navbar">
+                <div class="header__burger burger">
+                  <span class="burger__line burger__line_first"></span>
+                  <span class="burger__line burger__line_third"></span>
+                </div>
+                <div class="navbar_content">
+                  <div class="header__nav-close">
+                    <span class="header__nav-close-line"></span>
+                    <span class="header__nav-close-line"></span>
+                  </div>
+                  <div class="select-box">
+                    <div class="options-container">
+                      {% get_categories as categories %}
+                      {% for category in categories %}
+                      <div class="option">
+                        <a href="{% url 'category' category.pk %}">{{ category.title }}</a>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    <div class="selected">Курсы</div>
+                  </div>
+                  <!--ADAPTIVE-NAVBAR-ABOUT START-->
+                  <div class="adaptive_about-us">
+                    <a href="#!" class="adaptive_about">O нас</a>
+                    <a class="adaptive_bell" href="#!"><i class="far fa-bell"></i></a>
+                  </div>
+                  <!--ADAPTIVE-NAVBAR-ABOUT END-->
+                  <div class="navbar_content-search">
+                    <div class="navbar_content-search-wrap">
+                      <div class="search">
+                        <input type="text" class="searchTerm" placeholder="Поиск" />
+                        <button type="submit" class="searchButton">
+                          <img src="{% static 'img/search.svg' %}" alt="search" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="navbar_title">
+                  <a class="navbar_title-link" href="{% url 'home' %}"><span class="navbar_span-title">i</span>Courses</a>
+                </div>
+                <div class="navbar_register">
+                  <a class="navbar_register-about" href="#!">O нас</a>
+                  {% if request.user.is_authenticated %}
+                  <a class="navbar_bell" href="#!"><i class="far fa-bell"></i></a>  
+                  <div class="navbar_user">
+                    <div class="navbar_user-container">
+                      <div class="user_option">
+                        <a href="{% url 'profile' %}"> <img src="{% static 'img/userprofileicon.svg' %}" alt="profile"> Профиль</a>
+                      </div>
+                      <div class="user_option">
+                        <a href=""> <img src="{% static 'img/usercoursicon.svg' %}" alt="course" style="margin-right: 15px;"> Мои курсы</a>
+                      </div>
+                      <div class="user_option">
+                        <a href=""> <img src="{% static 'img/userdiplomicon.svg' %}" alt="diplom"> Достижения</a>
+                      </div>
+                      <div class="user_option">
+                        <a href=""> <img src="{% static 'img/usercloudicon.svg' %}" alt="cloud"> Загрузки</a>
+                      </div>
+                      <div class="user_option">
+                        <a href=""> <img src="{% static 'img/userexiticon.svg' %}" alt="exit">Выйти</a>
+                      </div>
+                    </div>
+                    <div class="nabvar_user-name"><img src="{% static 'img/username.png' %}" alt="username">{{ request.user }}</div>
+                  </div>
+
+                  {% else %}
+                  <link href="{% static 'css/main.css' %}">
+                  <a class="navbar_register-sign-up" href="#">Войти</a>
+                  <a class="navbar_register-registration" href="#">Присоединиться</a>
+                  <a class="navbar_exit-btn" href="#!"><img src="{% static 'img/exitBtn.svg' %}" alt=""></a>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+          <section class="main_content">
+            <div class="register_effect">
+              <div class="register_window-container">
+                <ul class="register_tabs">
+                  <li class="register_active">
+                    <a href="#">Войти</a>
+                  </li>
+                  <li>
+                    <a href="#">Регистрация</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="register_container">
+
+                {% include '_inc/login_form.html' %}
+
+                {% include '_inc/register_form.html' %}
+
+                {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </nav>
+          <!--NAVBAR END-->
+
+
+
+        {% block content %}{% endblock %}
+
+        <!--FOOTER START-->
+        <footer class="footer">
+          <div class="container">
+            <div class="footer_content">
+              <p class="footer_year">Taraz 2021</p>
+              <a class="footer_logo" href="#!"><span>i</span>Courses</a>
+              <p class="footer_author" title="Developer: Yerassyl Dauren Azamat">Designed by <span>Bekzat</span></p>
+            </div>
+          </div>
+        </footer>
+        <!--FOOTER END-->
+
+
+        <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
