@@ -1,3 +1,6 @@
+# Default ignored files
+/shelf/
+/workspace.xml
 settings.py
 iCourses/
 iCourses user/
@@ -7,3 +10,4 @@ icourses без пользователя.zip
 iCourses.rar
 zametki.txt
 venv/
+requirements.txt
