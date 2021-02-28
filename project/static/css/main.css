@@ -227,6 +227,7 @@ p {
   cursor: pointer;
   padding: 1px 0 0 0;
   outline: none;
+  background-image: url('/static/img/search.svg');
 }
 
 .searchButton img {
@@ -391,7 +392,7 @@ p {
   transition: 0.3s;
 }
 
-.register_labelname{
+label{
   font-size: 20px;
   font-weight: 700;
   margin-top: 26px;
@@ -399,13 +400,15 @@ p {
   align-items: center;
 }
 
-.register_labelname span{
+label span{
   font-size: 14px;
   color: #5BC0BE;
   margin-left: 10px;
 }
 
-.register_inputname{
+
+
+#id_username, #id_password, #id_email, #id_password1, #id_password2{
   max-width: 400px;
   margin-top: 5px;
   padding: 15px 10px 15px 27px;
@@ -958,3 +961,37 @@ p {
   /*HEADER END */  
 }
 /* Adaptiv end */
+
+
+
+.validationCheck {
+  background: #FFDC4E;
+  padding: 16px 22px;
+  color: #264653;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+  transition: 1.2s ease-in;
+  outline: none;
+  border: 0px;
+  cursor: pointer;
+}
+.validationCheck:hover {
+  transition: 0.7s ease-out;
+  box-shadow: 0px 0px 31px -2px #FFDC4E;
+  border-radius: 10px;
+}
+.git_link_input, .telegram_link_input {
+  padding: 15px;
+  outline: none;
+  resize: none;
+  background: transparent;
+  color: #FFDC4E;
+  font-size: 18px;
+  border: 1px solid #FFDC4E;
+  margin: 0 10px;
+}
+.git_link_input::placeholder , .telegram_link_input::placeholder {
+  color: #6fffe9 ;
+  opacity: 50%;
+}

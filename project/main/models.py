@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Category(models.Model):
@@ -37,6 +38,32 @@ class Lesson(models.Model):
     title = models.CharField(max_length=255)
     duration = models.CharField(max_length=10)
     link = models.CharField(max_length = 355, default = '')
+    repl_name = models.CharField(max_length = 255, default = '')
 
     def __str__(self):
         return self.title
+
+
+class TaskForLesson(models.Model):
+    lesson = models.OneToOneField(Lesson, on_delete = models.CASCADE)
+
+    def __str__(self):
+        return 'Задание урока ' + str(self.lesson)
+
+
+class FileOfTask(models.Model):
+    task = models.ForeignKey(TaskForLesson, on_delete = models.CASCADE)
+    name = models.CharField(max_length = 255)
+
+    def __str__(self):
+        return 'Файл {} к заданию {}'.format(str(self.name), str(self.task))
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(User, models.CASCADE)
+    title = models.CharField(max_length = 255)
+    content = models.TextField()
+    is_viewed = models.BooleanField(default = False)
+
+    def __str__(self):
+        return "Уведомление '{}' пользователю {}".format(self.title, self.user)

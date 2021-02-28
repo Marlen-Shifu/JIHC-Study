@@ -16,8 +16,8 @@
                         <a href="% url 'lesson' lesson.pk">{{ lesson }}</a>
 					</div>
 				</section>
-				<h2 class="inside__course-name">{{ lesson.course }}</h2>
-				<p class="inside__course-subtitile">{{ lesson.course.direction.category }}</p>
+				<h2 class="inside__course-name">{{ lesson }}</h2>
+				<p class="inside__course-subtitile">{{ lesson.course }}</p>
 				</div>
 			</header>
 			<div class="inside__info">
@@ -45,13 +45,18 @@
 						<iframe width="760" height="515" src="{{ lesson.link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 					<div class="video__player_btns">
-						<a href="#" class="download__course">Скачать курс</a>
+						<a href="{% url 'repl' lesson.repl_name %}" class="download__course">Открыть онлайн тренажер</a>
 						<a href="#" class="download__materials">Скачать материалы курса</a>
 						<a href="#"><i class="fas fa-heart"></i></a>
 						<a href="#"><i class="far fa-thumbs-up"></i></a>
 						<a href="#"><i class="far fa-thumbs-down"></i></a>
 					</div>
+					<div class="validation__main">
+				      <input type="text" name="git_link" id="git_link_input" class="git_link_input" placeholder="git">
+				      <button onclick="send_get_request_to_back()" class="validationCheck">Проверить</button>
+			     	</div>
 				</div>
+
 			</section>
 
         {% endblock %}

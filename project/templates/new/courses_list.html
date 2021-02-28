@@ -2,25 +2,14 @@
 {% load static %}
 
 	{% block content %}
-	{% if not is_search %}
-	<section class="bread">
-		<div class="container">
-			<div class="bread">
-				<a href="{% url 'home' %}">Главная страница</a>
-				<i class="fas fa-angle-right"></i>
-				<a href="{% url 'category' courses.first.direction.category.pk %}">{{ courses.first.direction.category }}</a>
-			</div>
-		</div>
-	</section>
-	{% endif %}
 	<section class="courses__web">
 		<div class="container">
 			<div class="courses__popular">
 				<div class="courses__popular_title">
-					<h2>{% if is_search %}{{ message }}{% else %}{{ courses.first.direction.category }}{% endif %}</h2>
+					<h2>Курсы</h2>
 				</div>
 				<div class="courses__popular__items">
-					{% for course in courses %}
+					{% for course in object_list %}
 					<div class="course__item">
 						<div class="course__image">
 							<img src="{{ course.photo.url }}" alt="" width="100">

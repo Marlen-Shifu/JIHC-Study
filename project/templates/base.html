@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iCoursers</title>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link
     rel="stylesheet"
@@ -46,22 +47,20 @@
                   <!--ADAPTIVE-NAVBAR-ABOUT END-->
                   <div class="navbar_content-search">
                     <div class="navbar_content-search-wrap">
-                      <div class="search">
-                        <input type="text" class="searchTerm" placeholder="Поиск" />
-                        <button type="submit" class="searchButton">
-                          <img src="{% static 'img/search.svg' %}" alt="search" />
-                        </button>
-                      </div>
+                      <form class="search" action="{% url 'search' %}">
+                        <input type="text" class="searchTerm" placeholder="Поиск" name="search_text" />
+                        <input type="submit" class="searchButton" value=""/>
+                      </form>
                     </div>
                   </div>
                 </div>
                 <div class="navbar_title">
-                  <a class="navbar_title-link" href="{% url 'home' %}"><span class="navbar_span-title">i</span>Courses</a>
+                  <a class="navbar_title-link" href="{% url 'home' %}"><span class="navbar_span-title">JIHC</span>Study</a>
                 </div>
                 <div class="navbar_register">
                   <a class="navbar_register-about" href="#!">O нас</a>
                   {% if request.user.is_authenticated %}
-                  <a class="navbar_bell" href="#!"><i class="far fa-bell"></i></a>  
+                  <a class="navbar_bell" href="{% url 'notifications' %}"><i class="far fa-bell"></i></a>  
                   <div class="navbar_user">
                     <div class="navbar_user-container">
                       <div class="user_option">

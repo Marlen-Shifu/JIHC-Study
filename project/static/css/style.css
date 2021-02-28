@@ -241,6 +241,9 @@ p {
     cursor: pointer;
     padding: 1px 0 0 0;
     outline: none;
+    background-image: url('/static/img/search.svg');
+    background-repeat: no-repeat;
+    background-position: 50% 50%; 
 }
 
 .searchButton img {
