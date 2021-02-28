@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/notification.css' %}">
+    <section class="bread">
+        <div class="container">
+            <div class="bread">
+                <a href="{% url 'home' %}">Главная страница</a>
+                <i class="fas fa-angle-right"></i>
+                <a href="{% url 'notifications' %}">Уведомления</a>
+            </div>
+        </div>
+    </section>
+    <section class="courses__mobile">
+        <div class="container">
+            <div class="courses__popular">
+                <div class="courses__popular_title">
+                    <h3>Уведомления</h3>
+                </div>
+                <div class="courses__popular__items">
+                    {% for notification in object_list %}
+                    <div class="{% if notification.is_viewed %}course__item_viewed{% else %}course__item{% endif %}">
+
+                        <div class="course__name">
+                            <h2>{{ notification.title }}</h2>
+
+                        </div>
+                        <div class="course__btn">
+                            <a href="{% url 'notification' notification.pk %}">Посмотреть</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+    </section>
+{% endblock %}
