@@ -4,8 +4,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iCoursers</title>
+    <title>JIHC-Study</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link
@@ -67,16 +68,16 @@
                         <a href="{% url 'profile' %}"> <img src="{% static 'img/userprofileicon.svg' %}" alt="profile"> Профиль</a>
                       </div>
                       <div class="user_option">
-                        <a href=""> <img src="{% static 'img/usercoursicon.svg' %}" alt="course" style="margin-right: 15px;"> Мои курсы</a>
+                        <a href="/profile/#tab_02"> <img src="{% static 'img/usercoursicon.svg' %}" alt="course" style="margin-right: 15px;"> Мои курсы</a>
                       </div>
                       <div class="user_option">
-                        <a href=""> <img src="{% static 'img/userdiplomicon.svg' %}" alt="diplom"> Достижения</a>
+                        <a href="/profile/#tab_03"> <img src="{% static 'img/userdiplomicon.svg' %}" alt="diplom"> Достижения</a>
                       </div>
                       <div class="user_option">
-                        <a href=""> <img src="{% static 'img/usercloudicon.svg' %}" alt="cloud"> Загрузки</a>
+                        <a href="/profile/#tab_04"> <img src="{% static 'img/usercloudicon.svg' %}" alt="cloud"> Загрузки</a>
                       </div>
                       <div class="user_option">
-                        <a href=""> <img src="{% static 'img/userexiticon.svg' %}" alt="exit">Выйти</a>
+                        <a href="{% url 'logout' %}"> <img src="{% static 'img/userexiticon.svg' %}" alt="exit">Выйти</a>
                       </div>
                     </div>
                     <div class="nabvar_user-name"><img src="{% static 'img/username.png' %}" alt="username">{{ request.user }}</div>

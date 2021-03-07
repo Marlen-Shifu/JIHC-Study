@@ -54,6 +54,7 @@ class TaskForLesson(models.Model):
 class FileOfTask(models.Model):
     task = models.ForeignKey(TaskForLesson, on_delete = models.CASCADE)
     name = models.CharField(max_length = 255)
+    description = models.TextField(default = '')
 
     def __str__(self):
         return 'Файл {} к заданию {}'.format(str(self.name), str(self.task))

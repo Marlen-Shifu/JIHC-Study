@@ -1,221 +1,149 @@
 {% extends 'base.html' %}
 {% load static %}
 
-    {% block content %}
+{% block content %}
+	<link rel="stylesheet" href="{% static 'css/userpage.css' %}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+	<header class="user">
+		<div class="container">
+			<div class="header__body">
+				<div class="header__user">
+					<div class="user-image">
+						<img src="{% static 'img/user image_1.png' %}" alt="">
+					</div>
+					<div class="user-info">
+						<div class="header__username">
+							<h3>{{ user }}</h3>
+						</div>
+						<div class="header__user-buttons">
+							<a href="#popup1">Pick a username</a>
+							<a href="#popup1">Add your bio</a>
+						</div>
+					</div>
+				</div>
+				<div class="header__button">
+					<a href="#popup1">Редактировать <br>профиль</a>
+				</div>
+				<div id="popup1" class="overlay">
+					<div class="popup">
+						<div class="popup__title">
+							<h2 >Редактировать</h2>
+							<a class="close" href="#">&times;</a>
+						</div>
+						<div class="content">
+						<div class="content__body">
+							<form action="#" class="edit__form">
+								<div class="form__text">
+									<textarea name="bio" id="#" rows="7" placeholder="Add a bio" class="form-bio"></textarea>
+									<input type="text" placeholder="Username" class="form-username" maxlength="15">
+									<input type="text" placeholder="Location" class="form-location">
+									<input type="text" placeholder="Company" class="form-company">
+								</div>
+								<div class="form__buttons">
+									<input type="button" value="Сохранить" class="form-save">
+									<a href="#"  class="form-cancel">Отменить</a>
+								</div>
+							</form>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<section class="tabs__main">
+		<div class="container">
+			<div class="tabs">
+				<nav class="tabs__items">
+					<a href="#tab_01" class="tabs__item"><span><i class="fas fa-book-open"></i>Недавние</span></a>
+					<a href="#tab_02" class="tabs__item"><span><i class="fas fa-book"></i> Мои Курсы <span class="course_num">{{ user.usercourses.my_courses.count }}</span></span></a>
+					<a href="#tab_03" class="tabs__item"><span><i class="fas fa-cloud-download-alt"></i> Загрузки</span></a>
+					<a href="#tab_04" class="tabs__item"><span><i class="fas fa-trophy"></i> Мои Достижения</span></a>
+				</nav>
+				<div class="tabs__body">
+					<div class="tabs__block" id="tab_01">
+						<div class="recent-courses">
+							<p class="recent-courses__title">Недавние курсы</p>
+							<div class="recent-courses__items">
+								{% for course in user.usercourses.last_courses.all %}
+								<div class="recent-courses__item">
+									<p class="recent-courses__name">{{ course.title }}</p>
+									<p class="recent-courses__course-name">{{ course.direction.category }}</p>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<div class="tabs__block" id="tab_02">
+						<div class="my-courses">
+							<div class="my-courses__top">
+								<form action="#" class="my-courses__search">
+									<input type="search" placeholder="Искать среди моих курсов..." class="my-courses__input-search">
+								</form>
+								<div class="my-courses__buttons">
+									<div class="dropType">
+										<button class="btnType">Тип:<span> Все</span></button>
+										<div class="contentType">
+											<a href="#">Link 1</a>
+											<a href="#">Link 2</a>
+											<a href="#">Link 3</a>
+										</div>
+									</div>
+									<div class="dropType">
+										<button class="btnType">Направления:<span> Все</span></button>
+										<div class="contentType">
+											<a href="#">Link 1</a>
+											<a href="#">Link 2</a>
+											<a href="#">Link 3</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="recent-courses__items">
+								{% for course in user.usercourses.my_courses.all %}
+								<div class="recent-courses__item">
+									<p class="recent-courses__name">{{ course.title }}</p>
+									<p class="recent-courses__course-name">{{ course.direction.category }}</p>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<div class="tabs__block" id="tab_03">
+						<div class="downloads">
+							<div class="tabs__download">
+								<input type="radio" name="tabs" id="tabone" checked="checked">
+								<label for="tabone"><i class="fas fa-cloud-download-alt"></i> Загружено</label>
+								<div class="tab">
+									<div class="downloaded__main">
+										<h2 class="downloaded__main-title">Вы еще ничего не скачивали</h2>
+										<a href="#" class="downloaded__main-link">К Курсам</a>
+									</div>
+								</div>
+								<input type="radio" name="tabs" id="tabtwo">
+								<label for="tabtwo"><i class="fas fa-download"></i> Скачивается</label>
+								<div class="tab">
+									<!-- хз что добавить -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tabs__block" id="tab_04">
+						<div class="achievements">
+							<div class="achievements__main">
+								<h2 class="achievements__main-title">У вас пока нету достижении</h2>
+								<a href="#" class="achievements__main-link">К Курсам</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
-    <link rel="stylesheet" href="{% static 'css/modal_adaptive.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+	<script src="{% static 'js/userpage.js' %}"></script>
 
-
-    <section class="profile">
-        <div class="container">
-            <div class="profile_header">
-                <div class="profile_img">
-                    <img src="{% static 'img/Ellipse 2.png' %}" alt="">
-                    <h1>Davon Lane</h1>
-                    <div class="profile_href">
-                        <a href="#">Pick a username</a>
-                        <a href="#">Add your bio</a>
-                    </div>
-                </div>
-                <div class="profile_btn">
-
-                    <button id="myBtn">Редактировать <br> профиль</button>
-
-                    <!-- The Modal -->
-                    <div id="myModal" class="modal">
-
-                        <!-- Modal content -->
-                        <div class="modal-content">
-                            <a class="close">&times;</a>
-                            <h1>Редактировать</h1>
-                            <div class="passwoords">
-                                <textarea class="input_write" placeholder="Add a bio" name="" id="" cols="9" rows="8"></textarea>
-                                <input id="username" class="searchTerm2" type="textarea" placeholder="Username ">
-                                <input id="locat" class="searchTerm2" type="textarea" placeholder="Location ">
-                                <input id="company" class="searchTerm2" type="textarea" placeholder="Company ">
-                            </div>
-                            <div class="save_btn">
-                                <a class="input_btn" href="">Сохранить</a>
-                                <a class="input_btn" href="">Отмена</a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="course">
-        <div class="container">
-            <div class="tabs">
-
-                <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked>
-                <label style="display: inline-flex;margin-top: 11px;
-                padding: 0px 27px;" for="tab-btn-1"><img class="active" style="padding: 0px 10px;" src="{% static 'img/book.svg' %}" alt=""> Обзор </label>
-                <input type="radio" name="tab-btn" id="tab-btn-2" value="">
-                <label style="display: inline-flex;
-                padding: 0px 27px;" for="tab-btn-2"><img style="padding: 0px 10px;" src="{% static 'img/copybook.svg' %}" alt=""> Мои курсы</label>
-                <input type="radio" name="tab-btn" id="tab-btn-3" value="">
-                <label style="display: inline-flex;
-                padding: 0px 27px;" for="tab-btn-3"><img style="padding: 0px 10px;" src="{% static 'img/cloud.svg' %}" alt=""> Загрузки</label>
-                <input type="radio" name="tab-btn" id="tab-btn-4" value="">
-                <label style="display: inline-flex;
-                padding: 0px 27px;" for="tab-btn-4"><img style="padding: 0px 10px;" src="{% static 'img/meadl.svg' %}" alt=""> Мои достижения</label>
-                <div class="content_1" id="content-1">
-                    <h1>Недавние курсы</h1>
-                    <div class="content_1_box">
-                        <div class="box">
-                            <div class="box_item_1">
-                                <div class="box_container">
-                                    <h2>Front-End Web разработка</h2>
-                                    <div class="course_name">
-                                        <div class="circle"></div>
-                                        <p>WEB</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="box_item_1">
-                                <div class="box_container">
-                                    <h2>Back-End Web разработчик</h2>
-                                    <div class="course_name">
-                                        <div class="circle"></div>
-                                        <p>WEB</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div class="box_item_2">
-                                <div class="box_container">
-                                    <h2>Color Theory</h2>
-                                    <div class="course_name">
-                                        <div style="background: #EA4335;" class="circle"></div>
-                                        <p>Design</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="box_item_2">
-                                <div class="box_container">
-                                    <h2>UI Дизайн с Figma</h2>
-                                    <div class="course_name">
-                                        <div style="background: #FF4EA3;" class="circle"></div>
-                                        <p>UI/UX</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="content-2">
-                    <div class="content2_search">
-                        <input type="text" class="content2_searchTerm" placeholder="Искать среди моих курсов..." />
-
-                        <div class="dropdown">
-                            <button onclick="myFunction()" class="dropbtn">Тип: <span>Все</span>  <i class="fa fa-caret-down"></i></button>
-                            <div id="myDropdown" class="dropdown-content">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                        </div>
-                        <div class="dropdown2">
-                            <button onclick="myFunction2()" class="dropbtn2">Направление: <span>Все</span>  <i class="fa fa-caret-down"></i></button>
-                            <div id="myDropdown2" class="dropdown-content2">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="content2_box">
-                        <div class="content2_item">
-                            <div class="box_container">
-                                <h2>Front-End Web разработка</h2>
-                                <div class="course_name">
-                                    <div class="circle"></div>
-                                    <p>WEB</p>
-                                    <p style="margin-left: 52px;">Пройдено: 57%</p>
-                                </div>
-                                <img style="margin-top: -247px;
-                                float: right;" src="{% static 'img/Rectangle 61.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="content2_item">
-                            <div class="box_container">
-                                <h2>Back-End Web разработка</h2>
-                                <div class="course_name">
-                                    <div class="circle"></div>
-                                    <p>WEB</p>
-                                    <p style="margin-left: 52px;">Пройдено: 90%</p>
-                                </div>
-                                <img style="margin-top: -247px;
-                                float: right;" src="{% static 'img/Rectangle 62.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="content2_item">
-                            <div class="box_container">
-                                <h2>UI дизайн с Figma</h2>
-                                <div class="course_name">
-                                    <div style="background: #FF4EA3;
-                                    " class="circle"></div>
-                                    <p>WEB</p>
-                                    <p style="margin-left: 52px;">Пройдено: 100%</p>
-                                </div>
-                                <img style="margin-top: -247px;
-                                float: right;" src="{% static 'img/Rectangle 63.png' %}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="content-3">
-                    <div class="content3_box">
-                        <div class="content3_nav"></div>
-                        <div class="tabs_2">
-                            <input type="radio" name="tab_2-btn" id="tab_2-btn-1" value="" checked>
-                            <label style="    cursor: pointer; z-index: 0; margin-left: 77px;     display: inline-flex; background-color: #56FDC3; border-radius: 23px; padding: 8px 14px;color: #264653; "><img style="
-                                padding: 0px 5px;
-                            "  src="{% static 'img/Group.svg' %}">Загружено</label>
-                            <input type="radio" name="tab_2-btn" id="tab_2-btn-2" value="">
-                            <label style=" cursor: pointer; z-index: 0; display: inline-flex;color: #264653;" for="tab_2-btn-2"><img src="{% static 'img/mdi_download.svg' %}" alt=""> Скачивается</label>
-
-
-                            <div id="content2-1" class="content2_1">
-                                <div class="content2_2_center">
-                                    <h1>Вы еще ничего не скачивали</h1>
-                                    <input onClick='location.href="#"' class="center_value" type="submit" value="К Курсам" placeholder="К Курсам">
-                                </div>
-
-                            </div>
-                            <div style="margin-top: 101px;" id="content2-2">
-                                <div class="content2_3_center">
-                                    <h1>Вы еще ничего не скачивали</h1>
-                                    <input onClick='location.href="#"' class="center_value" type="submit" value="К Курсам" placeholder="К Курсам">
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                <div id="content-4">
-                    <div class="content4_box">
-                        <div class="content2_2_center">
-                            <h1>Вы еще ничего не скачивали</h1>
-                            <input style="cursor: pointer;" class="center_value2" type="submit" value="К Курсам" placeholder="К Курсам">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <script src="{% static 'js/modal.js' %}"></script>
-    {% endblock %}
+{% endblock %}

@@ -816,6 +816,7 @@ p {
     display: inline-block;
     background: #FFDC4E;
     transition: 1.2s ease-in;
+    cursor: pointer;
 }
 
 .fa-heart {

@@ -45,8 +45,8 @@
 						<iframe width="760" height="515" src="{{ lesson.link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 					<div class="video__player_btns">
-						<a href="{% url 'repl' lesson.repl_name %}" class="download__course">Открыть онлайн тренажер</a>
-						<a href="#" class="download__materials">Скачать материалы курса</a>
+						<a href="{% url 'repl' lesson.repl_name lesson.pk %}" class="download__course">Открыть онлайн тренажер</a>
+						<a onclick="addCourseToFavorite()" class="download__materials">Добавить курс в 'Мои курсы'</a>
 						<a href="#"><i class="fas fa-heart"></i></a>
 						<a href="#"><i class="far fa-thumbs-up"></i></a>
 						<a href="#"><i class="far fa-thumbs-down"></i></a>
@@ -58,5 +58,18 @@
 				</div>
 
 			</section>
+
+
+			<script type="text/javascript">
+				async function addCourseToFavorite() {
+					let response = await fetch('/add_course_to_favorite/?user={{ request.user }}&course_pk={{ lesson.course.pk }}');
+
+					if (response.ok) {
+						let btn = document.querySelector('.download__materials');
+						btn.textContent = "Добавлено в 'Мои курсы'";
+						btn.style.backgroundColor = '#bf9d10'
+					}
+				}
+			</script>
 
         {% endblock %}

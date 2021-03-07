@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.views.generic import ListView, DetailView
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from django.core.exceptions import ValidationError
 
@@ -27,7 +27,12 @@ def course(request, course_id):
     course = Course.objects.get(pk = course_id)
     lessons = Lesson.objects.filter(course = course)
 
-    return render(request, 'new/lessons.html', {'lessons': lessons, 'login_form': LoginForm, 'registration_form': RegistrationForm})
+    response = render(request, 'new/lessons.html', {'lessons': lessons, 'login_form': LoginForm, 'registration_form': RegistrationForm})
+
+    user = User.objects.get(username = request.user)
+    user.usercourses.add_last_course(course)
+
+    return response
 
 
 def lesson(request, lesson_id):
@@ -90,8 +95,10 @@ class NotificationDetailView(DetailView):
         return qs
 
 
-def repl_page(request, repl_name):
-    return render(request, 'new/repl.html', {'repl_name': repl_name})
+def repl_page(request, repl_name, lesson_pk):
+    lesson = Lesson.objects.get(pk = lesson_pk)
+    tasks = lesson.taskforlesson.fileoftask_set.all()
+    return render(request, 'new/task_repl.html', {'repl_name': repl_name, 'tasks': tasks})
 
 
 def search(request):
@@ -108,3 +115,18 @@ class CoursesListView(ListView):
     model = Course
     order_by = '-pk'
     template_name = 'new/courses_list.html'
+
+
+
+def add_course_to_favorite(request):
+    user = User.objects.get(username = request.GET.get('user'))
+    course = Course.objects.get(pk = request.GET.get('course_pk'))
+
+    user.usercourses.add_my_course(course)
+
+    return JsonResponse({'status': '200'})
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('home')

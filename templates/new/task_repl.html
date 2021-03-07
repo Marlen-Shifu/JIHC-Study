@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/task_repl.css' %}">
+
+	<section class="sandbox">
+		<div class="sandbox__body">
+			<div class="task__list">
+				<div class="task__wrap">
+					{% for task in tasks %}
+					<div class="task__item">
+						<input class="task__input" type="checkbox" id="task_{{ task.pk }}">
+						<label class="task__title" for="task_{{ task.pk }}">{{ task.name }}</label>
+						<div class="task__text">
+							<p>{{ task.description }}</p>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="sandbox__main">
+				<div class="container__ide">
+					<iframe class="ide" src="https://repl.it/@MarlenShifu/{{ repl_name }}?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

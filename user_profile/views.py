@@ -5,11 +5,14 @@ from django.contrib.auth import authenticate, login
 from django.core.exceptions import ValidationError
 
 from .forms import *
+from .models import *
 
 
 def profile(request):
 
-    return render(request, 'new/user.html', {'login_form': LoginForm, 'registration_form': RegistrationForm})
+    user = User.objects.get(username = request.user)
+
+    return render(request, 'new/user.html', {'user': user, 'login_form': LoginForm, 'registration_form': RegistrationForm})
 
 
 def login_user(request):
@@ -39,6 +42,8 @@ def register_user(request):
             cd = form.cleaned_data
             user = User(username = cd['username'], email = cd['email'], password = cd['password1'])
             user.save()
+            user_courses = UserCourses(user = user)
+            user_courses.save()
             login(request, user)
             return redirect('home')
 
