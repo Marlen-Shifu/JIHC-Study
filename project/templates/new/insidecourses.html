@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+        {% block content %}
+
+			<header class="inside__header">
+				<div class="container">
+				<section class="bread">
+					<div class="bread">
+						<a href="{% url 'home' %}">Главная страница</a>
+                        <i class="fas fa-angle-right"></i>
+                        <a href="{% url 'category' lesson.course.direction.category.pk %}">{{ lesson.course.direction.category }}</a>
+                        <i class="fas fa-angle-right"></i>
+                        <a href="% url 'course' lesson.course.pk">{{ lesson.course }}</a>
+                        <i class="fas fa-angle-right"></i>
+                        <a href="% url 'lesson' lesson.pk">{{ lesson }}</a>
+					</div>
+				</section>
+				<h2 class="inside__course-name">{{ lesson }}</h2>
+				<p class="inside__course-subtitile">{{ lesson.course }}</p>
+				</div>
+			</header>
+			<div class="inside__info">
+				<div class="container__2">
+					<div class="inside__info_main">
+						<div class="course__contain">
+							<div class="course__contain-text">
+								<p><i class="far fa-clock"></i>{{ lesson.course.duration }}</p>
+								<p><i class="far fa-play-circle"></i>{{ lesson.course.lesson_set.count }} урок(ов)</p>
+								<p><i class="fas fa-globe"></i>{{ lesson.course.language }}</p>
+								<p><i class="far fa-calendar-alt"></i> 01.02.2020</p>
+								<p><i class="far fa-user"></i>{{ lesson.course.author }}</p>
+							</div>
+							<div class="course__contain-rating">
+								<img src="{% static 'img/rating.png' %}" alt="">
+							</div>
+						</div>
+						<p class="contain__text">{{ lesson.course.description }}</p>
+					</div>
+				</div>
+			</div>
+			<section class="video__player">
+				<div class="container">
+					<div class="video__player__main">
+						<iframe width="760" height="515" src="{{ lesson.link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+					<div class="video__player_btns">
+						<a href="{% url 'repl' lesson.repl_name %}" class="download__course">Открыть онлайн тренажер</a>
+						<a href="#" class="download__materials">Скачать материалы курса</a>
+						<a href="#"><i class="fas fa-heart"></i></a>
+						<a href="#"><i class="far fa-thumbs-up"></i></a>
+						<a href="#"><i class="far fa-thumbs-down"></i></a>
+					</div>
+					<div class="validation__main">
+				      <input type="text" name="git_link" id="git_link_input" class="git_link_input" placeholder="git">
+				      <button onclick="send_get_request_to_back()" class="validationCheck">Проверить</button>
+			     	</div>
+				</div>
+
+			</section>
+
+        {% endblock %}
