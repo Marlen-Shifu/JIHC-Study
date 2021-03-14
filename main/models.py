@@ -40,6 +40,13 @@ class Lesson(models.Model):
     link = models.CharField(max_length = 355, default = '')
     repl_name = models.CharField(max_length = 255, default = '')
 
+
+    def has_taskforlesson(self):
+        if self.taskforlesson:
+            return True
+        else:
+            return False
+
     def __str__(self):
         return self.title
 

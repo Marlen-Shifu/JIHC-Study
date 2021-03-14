@@ -1,0 +1,53 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/login-register.css' %}">
+	<title>Login</title>
+</head>
+<body>
+	<section class="reg-form">
+		<div class="container">
+			<div class="reg-form__body">
+				<div class="reg-form__title">
+					<a href="index.html"><span class="reg-form__title-1">JIHC</span>Study</a>
+				</div>
+				<div class="register_container">
+					<form class="register_panel active" data-index="0" method="post" action="{% url 'login' %}">
+
+						{% for error in login_form.non_field_errors %}
+					        <div class="alert alert-danger">
+					            <strong>{{ error|escape }}</strong>
+					        </div>
+					    {% endfor %}
+
+						{% csrf_token %}
+
+						{% for field in login_form %}
+
+							<label for="{{ field.id_for_label }}" class="register_labelname">{{ field.label }}</label>
+							{{ field }}
+
+							{% if field.errors %}
+
+								{% for error in field.errors %}
+									<p>{{ error }}</p>
+								{% endfor %}
+								
+							{% endif %}
+							
+						{% endfor %}
+
+						<input class="register_btn" type="submit" value="Войти" />
+						<a class="register_linktext" href="#!">By signing up to create an account I accept iCourses’ Terms of Use and Privacy Policy</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

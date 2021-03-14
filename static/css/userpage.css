@@ -9,6 +9,7 @@
 body {
 	background-color: #264653;
 	color: #6fffe9;
+	scroll-behavior: smooth;
 }
 html{
 	scroll-behavior: smooth;
@@ -121,7 +122,7 @@ html{
 	background: #FFDC4E;
 	position: absolute;
 	left: 20px;
-	width: 115px;
+	width: 142px;
 	display: inline-block;
 	transition: 0.4s;
 	-webkit-box-shadow: 0px 0px 16px 0px #FFDC4E; 
@@ -131,7 +132,7 @@ html{
 	border-radius: 10px;
 	background: #FFDC4E;
 	position: absolute;
-	left: 175px;
+	left: 205px;
 	display: inline-block;
 	width: 185px;
 	transition: 0.4s;
@@ -141,7 +142,7 @@ html{
 .tabs__block:nth-child(3):before{
 	border-radius: 10px;
 	background: #FFDC4E;
-	left: 396px;
+	left: 425px;
 	width: 145px;
 	transition: 0.4s;
 	-webkit-box-shadow: 0px 0px 16px 0px #FFDC4E; 
@@ -150,7 +151,7 @@ html{
 .tabs__block:nth-child(4):before{
 	border-radius: 10px;
 	background: #FFDC4E;
-	left: 577px;
+	left: 607px;
 	width: 200px;
 	-webkit-box-shadow: 0px 0px 16px 0px #FFDC4E; 
 	box-shadow: 0px 0px 16px 0px #FFDC4E;
@@ -325,114 +326,67 @@ box-shadow: inset 0px 0px 34px -14px #56FDC3;
 	margin: 60px 0px 30px 0;
 	font-size: 30px;
 }
-.overlay {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: rgba(0, 0, 0, 0.9);
-	transition: opacity 500ms;
-	visibility: hidden;
-	z-index: 10000;
-	opacity: 0;
+.imageDone{
+  background: #FFDC4E;
+  border-radius: 10px;
+  transition: 0.5s ease-out;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #264653;
+  text-decoration: none;
+  display: inline-block;
 }
-.overlay:target {
-	visibility: visible;
-	opacity: 1;
-	overflow: auto;
+.imageDone:hover{
+  transition: 0.4s;
+  -webkit-box-shadow: 0px 0px 16px 0px #ffdc4e;
+  box-shadow: 0px 0px 16px 0px #ffdc4e;
 }
-.popup {
-	margin: 70px auto;
-	padding: 20px;
-	background: #6fffe9;
-	border-radius: 5px;
-	width: 30%;
-	position: relative;
-	transition: all 5s ease-in-out;
+.content1 input {
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-weight: bold;
+  background: #FFF;
+  color: #264653;
+  text-decoration: none;
 }
-
-.popup h2 {
-	margin-top: 0;
-	color: #333;
+.user-image img{
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
 }
-.popup .close {
-	position: absolute;
-	top: 20px;
-	right: 30px;
-	transition: all 200ms;
-	font-size: 30px;
-	font-weight: bold;
-	text-decoration: none;
-	color: #264653;
+.overlay1 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  transition: opacity 500ms;
+  visibility: hidden;
+  z-index: 10000;
+  opacity: 0;
 }
-.popup .close:hover {
-	color: #ffdc4e;
+.overlay1:target {
+  visibility: visible;
+  opacity: 1;
+  overflow: auto;
 }
-.popup .content {
-	max-height: 30%;
-	overflow: auto;
+.popup1 {
+  margin: 70px auto;
+  padding: 20px;
+  background: #6fffe9;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
 }
-.popup__title{
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+.popup1 .content1 {
+  max-height: 30%;
+  overflow: auto;
+  text-align: center;
 }
-.popup__title h2{
-	color: #264653;
-	font-size: 28px;
-}
-.form__text{
-	display: flex;
-	flex-direction: column;
-	margin: 10px 0;
-}
-.form-bio{
-	resize: none;
-}
-.form__text input , .form__text textarea{
-	margin: 5px 0;
-	padding: 8px 17px;
-	outline: none;
-	color: #264653;
-	font-weight: bold;
-	border: 2px solid #264653;
-	border-radius: 15px;
-	background: transparent;
-	font-size: 17px;
-}
-.form__text input::placeholder , .form__text textarea::placeholder{
-	color:#4AA29EFF;
-}
-.form__text input:focus , .form__text textarea:focus{
-	border:2px solid #FFDC4E;
-	transition: 0.4s;
-}
-.form__buttons{
-	display: flex;
-	justify-content: flex-start;
-}
-.form-cancel, .form-save {
-	outline: none;
-	padding: 6px 13px;
-	text-decoration: none;
-	text-align: center;
-	background-color: #264653;
-	border-radius: 20px;
-	font-weight: bold;
-	font-size: 16px;
-	border:0px;
-	cursor: pointer;
-	margin: 0 10px 0 0 ;
-	color: #6fffe9;
-	transition: 0.3s;
-}
-.form-cancel:hover, .form-save:hover {
-	background: #FFDC4E;
-	color: #264653;
-	transition: 0.2s ease-out;
-}
-
 @media (max-width: 820px){
 	.header__username h3{
 		display: block;

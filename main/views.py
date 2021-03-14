@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 
 from django.contrib.auth import authenticate, login, logout
 
@@ -29,8 +29,11 @@ def course(request, course_id):
 
     response = render(request, 'new/lessons.html', {'lessons': lessons, 'login_form': LoginForm, 'registration_form': RegistrationForm})
 
-    user = User.objects.get(username = request.user)
-    user.usercourses.add_last_course(course)
+    try:
+        user = User.objects.get(username = request.user)
+        user.usercourses.add_last_course(course)
+    except Exception as e:
+        pass
 
     return response
 
@@ -130,3 +133,7 @@ def add_course_to_favorite(request):
 def logout_user(request):
     logout(request)
     return redirect('home')
+
+
+class About(TemplateView):
+    template_name = 'new/about-us.html'

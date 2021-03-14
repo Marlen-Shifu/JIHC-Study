@@ -14,4 +14,5 @@ urlpatterns = [
     path('search/', search, name='search'),
     path('add_course_to_favorite/', add_course_to_favorite, name = 'add_course_to_favorite'),
     path('logout/', logout_user, name = 'logout'),
+    path('about/', About.as_view(), name = 'about-us'),
 ]

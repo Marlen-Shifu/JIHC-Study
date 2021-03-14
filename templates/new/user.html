@@ -10,45 +10,27 @@
 			<div class="header__body">
 				<div class="header__user">
 					<div class="user-image">
-						<img src="{% static 'img/user image_1.png' %}" alt="">
+						<img src="{% if request.user.profile.photo %}{{ request.user.profile.photo.url }}{% else %}{% static 'img/user image_1.png' %}{% endif %}" id="output"/ alt="Аватарка" alt="">
 					</div>
 					<div class="user-info">
 						<div class="header__username">
 							<h3>{{ user }}</h3>
 						</div>
-						<div class="header__user-buttons">
-							<a href="#popup1">Pick a username</a>
-							<a href="#popup1">Add your bio</a>
-						</div>
 					</div>
 				</div>
-				<div class="header__button">
-					<a href="#popup1">Редактировать <br>профиль</a>
-				</div>
-				<div id="popup1" class="overlay">
-					<div class="popup">
-						<div class="popup__title">
-							<h2 >Редактировать</h2>
-							<a class="close" href="#">&times;</a>
-						</div>
-						<div class="content">
-						<div class="content__body">
-							<form action="#" class="edit__form">
-								<div class="form__text">
-									<textarea name="bio" id="#" rows="7" placeholder="Add a bio" class="form-bio"></textarea>
-									<input type="text" placeholder="Username" class="form-username" maxlength="15">
-									<input type="text" placeholder="Location" class="form-location">
-									<input type="text" placeholder="Company" class="form-company">
-								</div>
-								<div class="form__buttons">
-									<input type="button" value="Сохранить" class="form-save">
-									<a href="#"  class="form-cancel">Отменить</a>
-								</div>
-							</form>
-						</div>
-						</div>
-					</div>
-				</div>
+				  <div class="header__button">
+		          <a href="#loadphoto" class="">Изменить <br>аватарку</a>
+		        </div>
+		        <div id="loadphoto" class="overlay1">
+		          <div class="popup1">
+		            <form class="content1" method="POST" action="{% url 'change_photo' %}" enctype="multipart/form-data">
+		              {% csrf_token %}
+		              {{ photo_change_form }}
+		              <input type="submit" class="imageDone" value="Готово">
+		              <a href="#" class="imageDone">Отмена</a>
+		            </form>
+		          </div>
+		        </div>
 			</div>
 		</div>
 	</header>
@@ -56,8 +38,19 @@
 		<div class="container">
 			<div class="tabs">
 				<nav class="tabs__items">
-					<a href="#tab_01" class="tabs__item"><span><i class="fas fa-book-open"></i>Недавние</span></a>
-					<a href="#tab_02" class="tabs__item"><span><i class="fas fa-book"></i> Мои Курсы <span class="course_num">{{ user.usercourses.my_courses.count }}</span></span></a>
+					<a href="#tab_01" class="tabs__item"><span><i class="fas fa-book-open"></i> Недавние</span></a>
+					<a href="#tab_02" class="tabs__item">
+						<span><i class="fas fa-book"></i> 
+							Мои Курсы 
+							<span class="course_num">
+							{% if user.usercourses.my_courses.count <= 9 %}
+							{{ user.usercourses.my_courses.count }}
+							{% else %}
+							9+
+							{% endif %}
+							</span>
+						</span>
+					</a>
 					<a href="#tab_03" class="tabs__item"><span><i class="fas fa-cloud-download-alt"></i> Загрузки</span></a>
 					<a href="#tab_04" class="tabs__item"><span><i class="fas fa-trophy"></i> Мои Достижения</span></a>
 				</nav>
@@ -114,15 +107,15 @@
 						<div class="downloads">
 							<div class="tabs__download">
 								<input type="radio" name="tabs" id="tabone" checked="checked">
-								<label for="tabone"><i class="fas fa-cloud-download-alt"></i> Загружено</label>
+								<label for="tabone"><i class="fas fa-cloud-download-alt"></i>  Загружено</label>
 								<div class="tab">
 									<div class="downloaded__main">
 										<h2 class="downloaded__main-title">Вы еще ничего не скачивали</h2>
-										<a href="#" class="downloaded__main-link">К Курсам</a>
+										<a href="{% url 'courses' %}" class="downloaded__main-link">К Курсам</a>
 									</div>
 								</div>
 								<input type="radio" name="tabs" id="tabtwo">
-								<label for="tabtwo"><i class="fas fa-download"></i> Скачивается</label>
+								<label for="tabtwo"><i class="fas fa-download"></i>     Скачивается</label>
 								<div class="tab">
 									<!-- хз что добавить -->
 								</div>
@@ -133,7 +126,7 @@
 						<div class="achievements">
 							<div class="achievements__main">
 								<h2 class="achievements__main-title">У вас пока нету достижении</h2>
-								<a href="#" class="achievements__main-link">К Курсам</a>
+								<a href="{% url 'courses' %}" class="achievements__main-link">К Курсам</a>
 							</div>
 						</div>
 					</div>

@@ -25,4 +25,7 @@ class UserCourses(models.Model):
 		if course not in self.my_courses.all():
 			self.my_courses.add(course)
 
-	
+
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	photo = models.ImageField(upload_to = 'users/', blank=True)

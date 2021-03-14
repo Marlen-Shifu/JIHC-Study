@@ -23,7 +23,7 @@
 					{% for course in courses %}
 					<div class="course__item">
 						<div class="course__image">
-							<img src="{{ course.photo.url }}" alt="" width="100">
+							<img src="{{ course.photo.url }}" alt="" >
 						</div>
 						<div class="course__info">
 							<div class="course__text">
@@ -33,7 +33,7 @@
 									<p>{{ course.description }}</p>
 								</div>
 								<div class="course__rating">
-									<img src="{% static 'img/rating.png' %}" alt="">
+									<img src="{% static 'img/rating.png' %}" alt="" >
 								</div>
 							</div>
 							<div class="course__about">

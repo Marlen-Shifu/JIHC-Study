@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static "css/about-us.css" %}">
+
+	<section class="about-us">
+		<div class="container">
+			<div class="about-us__body">
+				<div class="about-us__text">
+					<div class="about-us__title">
+						<h2>О нас</h2>
+					</div>
+					<div class="about-us__subtitle">
+						<p>JIHC STUDY дает вам мгновенный доступ ко всем курсам - от <br>SMM до Mobile Development. Просто начни курс <br>который тебе по душе.</p>
+					</div>
+				</div>
+				<div class="about-us__items_body">
+					<div class="about-us__items">
+						<div class="about-us__item">
+							<img src="{% static "img/image 2.png" %}" alt="" class="item-img">
+							<h4 class="item-title">Обучайся везде</h4>
+							<p class="item-text">Наш курс работает на вашем <br>телефоне, ноутбуке и даже на ТВ.</p>
+						</div>
+						<div class="about-us__item">
+							<img src="{% static "img/image 3.png" %}" alt="" class="item-img">
+							<h4 class="item-title">Безлимитный, бесплатный</h4>
+							<p class="item-text">Никакой рекламы. Никаких помех. <br>Только курсы.</p>
+						</div>
+						<div class="about-us__item">
+							<img src="{% static "img/image 4.png" %}" alt="" class="item-img">
+							<h4 class="item-title">Скачай и учись оффлайн</h4>
+							<p class="item-text">Проходи наши курсы <br>даже если у тебя нету интернета</p>
+						</div>
+						<div class="about-us__item">
+							<img src="{% static "img/image 5.png" %}" alt="" class="item-img">
+							<h4 class="item-title">Качественно и удобно</h4>
+							<p class="item-text">Готовься качественным урокам <br>и прокачай свой уровень</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

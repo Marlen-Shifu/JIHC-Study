@@ -80,34 +80,6 @@ userOption.forEach(o => {
 //burger end
 
 
-try {
-    navbarSignUp.addEventListener("click", () => {
-    registerEffect.classList.toggle("blur_effect-active");
-    registerEffect.classList.toggle("active");
-    navbarExitBtn.classList.toggle("active");
-    navbarTitle.classList.toggle("active")
-    navbarTitleSpan.classList.toggle("active")
-    console.log('asdfgds')
-});
-
-navbarRegister.addEventListener("click", () => {
-    registerEffect.classList.toggle("blur_effect-active");
-    registerEffect.classList.toggle("active");
-    navbarExitBtn.classList.toggle("active");
-    navbarTitle.classList.toggle("active")
-    navbarTitleSpan.classList.toggle("active")
-});
-
-navbarExitBtn.addEventListener("click", () => {
-    registerEffect.classList.remove("blur_effect-active");
-    registerEffect.classList.remove("active");
-    navbarExitBtn.classList.remove("active");
-    navbarTitle.classList.toggle("active")
-    navbarTitleSpan.classList.toggle("active")
-})
-} catch{};
-
-
 
 try{
     for (let el of registerTabsLinks) {

@@ -45,15 +45,15 @@
 						<iframe width="760" height="515" src="{{ lesson.link }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 					<div class="video__player_btns">
-						<a href="{% url 'repl' lesson.repl_name lesson.pk %}" class="download__course">Открыть онлайн тренажер</a>
-						<a onclick="addCourseToFavorite()" class="download__materials">Добавить курс в 'Мои курсы'</a>
+						<a href="{% url 'repl' lesson.repl_name lesson.pk %}" class="download__course {% if lesson.has_taskforlesson %}{% else %}disabled{% endif %}">Открыть онлайн тренажер</a>
+						<a onclick="addCourseToFavorite()" class="download__materials {% if user.is_authenticated %}{% else %}disabled{% endif %}">Добавить курс в 'Мои курсы'</a>
 						<a href="#"><i class="fas fa-heart"></i></a>
 						<a href="#"><i class="far fa-thumbs-up"></i></a>
 						<a href="#"><i class="far fa-thumbs-down"></i></a>
 					</div>
 					<div class="validation__main">
-				      <input type="text" name="git_link" id="git_link_input" class="git_link_input" placeholder="git">
-				      <button onclick="send_get_request_to_back()" class="validationCheck">Проверить</button>
+				      <input type="text" name="git_link" id="git_link_input" class="git_link_input {% if lesson.has_taskforlesson %}{% else %}disabled{% endif %}" placeholder="git">
+				      <button onclick="send_get_request_to_back()" class="validationCheck {% if lesson.has_taskforlesson %}{% else %}disabled{% endif %}">Проверить</button>
 			     	</div>
 				</div>
 

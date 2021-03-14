@@ -6,6 +6,7 @@ body {
   padding: 0;
   background-color: #264653;
   color: #6fffe9;
+  scroll-behavior: smooth;
 }
 
 .container {
@@ -26,7 +27,7 @@ p {
 /*NAVBAR START*/
 
 .nav{
-  padding: 10px 0;
+  padding: 10px 30px;
 }
 
 .navbar {
@@ -596,7 +597,12 @@ label span{
   color: #ffdc4e;
   line-height: 23px;
 }
-
+.nabvar_user-name img{
+  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
 /*HEADER END*/
 
 /*FOOTER START*/
@@ -670,8 +676,220 @@ label span{
 
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 999px) {
   /*NAVBAR START*/
+    /*NAVBAR START*/
+    .navbar_content {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #264653;
+        z-index: 25;
+        padding: 75px 0;
+        transform: translateX(-100%);
+        transition: 0.3s all linear;
+    }
+    .header__nav_active {
+        transform: translateX(0);
+    }
+    .header__burger {
+        display: block;
+    }
+    .header__nav-close {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 22px;
+        left: 20px;
+        z-index: 11;
+    }
+    .header__nav-close-line {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: #FFDC4E;
+        position: absolute;
+        top: 50%;
+    }
+    .header__nav-close-line:first-child {
+        transform: translateY(-50%) rotate(45deg);
+    }
+    .header__nav-close-line:last-child {
+        transform: translateY(-50%) rotate(-45deg);
+    }
+    .selected {
+        font-size: 22px;
+    }
+    .selected.active {
+        font-size: 22px;
+    }
+    .selected::after {
+        left: 180px;
+    }
+    .selected.active::after {
+        left: 180px;
+    }
+    .navbar_content-search {
+        margin: 20px auto 0 auto;
+    }
+    .select-box {
+        margin: 10px auto 0 auto;
+    }
+    .select-box .options-container {
+        position: relative;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    .select-box .options-container .option a::after {
+        display: none;
+    }
+    .select-box .options-container .option a {
+        padding-right: 0;
+        font-size: 20px;
+    }
+    .select-box .options-container.active {
+        min-height: 185px;
+    }
+    .navbar_title .navbar_title-link {
+        font-size: 32px;
+    }
+    .adaptive_about-us {
+        display: flex;
+        align-items: center;
+        margin: 10px auto 0 auto;
+    }
+    .adaptive_about {
+        color: #6fffe9;
+        text-decoration: none;
+        font-size: 22px;
+        font-weight: 700;
+        margin-right: 20px;
+        transition: 0.5s;
+    }
+    .adaptive_about:hover {
+        background-color: #ffdc4e;
+        border-radius: 12px;
+        padding: 10px;
+        color: #264653;
+    }
+    .adaptive_bell {
+        text-decoration: none;
+        color: #6FFFE9;
+        font-size: 22px;
+        transition: 0.3s;
+    }
+    .adaptive_bell:hover {
+        color: #ffdc4e;
+    }
+    .navbar_register-about {
+        display: none;
+    }
+    .navbar_bell {
+        display: none;
+    }
+    .nabvar_user-name {
+        font-size: 16px;
+        padding-right: 0;
+    }
+    .nabvar_user-name p {
+        display: none;
+    }
+    .nabvar_user-name.active {
+        font-size: 16px;
+        padding-right: 0;
+    }
+    .nabvar_user-name::after {
+        left: -25px;
+        top: 20px;
+    }
+    .nabvar_user-name.active::after {
+        left: -25px;
+    }
+    .navbar_user .navbar_user-container.active+.nabvar_user-name::after {
+        top: -19px;
+    }
+    .navbar_user .navbar_user-container {
+        margin-top: 60px;
+        right: 0;
+    }
+    .navbar_user .navbar_user-container .user_option a {
+        font-size: 16px;
+    }
+    .navbar_user .navbar_user-container.active {
+        min-height: 160px;
+        right: 0px;
+    }
+    /*NAVBAR END*/
+    /*HEADER START*/
+    .header {
+        margin-top: 80px;
+    }
+    .header_left h1 br {
+        display: none;
+    }
+    .header_left h1 {
+        font-size: 38px;
+        line-height: 45px;
+        text-align: center;
+    }
+    .header_left p br {
+        display: none;
+    }
+    .header_left p {
+        font-size: 20px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .header_register_registration-border {
+        margin-top: 65px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .header_right img {
+        display: none;
+    }
+    .header_register_registration-border {
+        width: 243px;
+        height: 64px;
+    }
+    .header_register_registration {
+        padding: 17px 65px;
+    }
+    .header_coursers_title {
+        font-size: 30px;
+    }
+    .header_coursers-content {
+        margin-top: 50px;
+    }
+    .header_coursers-item:first-child {
+        margin-top: 0;
+    }
+    .header_coursers-item {
+        margin-top: 40px;
+    }
+    .header_coursers-item h3 {
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+    .header_coursers-item p {
+        margin-top: 20px;
+    }
+    .footer_content {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer_year {
+        display: none;
+    }
+    .footer_logo {
+        font-size: 32px;
+        letter-spacing: 1px;
+    }
 
   .navbar{
     padding-top: 10px;
