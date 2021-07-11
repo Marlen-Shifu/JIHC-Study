@@ -244,7 +244,7 @@ p {
     outline: none;
     background-image: url('/static/img/search.svg');
     background-repeat: no-repeat;
-    background-position: 50% 50%; 
+    background-position: 50% 50%;
 }
 
 .searchButton img {
@@ -658,7 +658,6 @@ p {
 .course__about {
     padding: 20px 0 30px;
     display: flex;
-    justify-content: space-between;
 }
 
 .course__contain {
