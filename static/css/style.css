@@ -36,7 +36,9 @@ h1 {
 p {
     margin: 0;
 }
-
+.color-white{
+    color:#FFF !important;
+}
 
 /*NAVBAR START*/
 
@@ -253,6 +255,8 @@ p {
 
 .navbar_title {
     z-index: 20;
+    display: flex;
+    align-items: center;
 }
 
 .navbar_title .navbar_title-link {
@@ -392,7 +396,7 @@ p {
 }
 
 .navbar_user .navbar_user-container.active {
-    min-height: 215px;
+    min-height: 240px;
     opacity: 1;
 }
 
@@ -622,6 +626,7 @@ p {
   }
 }
 .course__info {
+    width: 100%;
     padding: 15px 15px 0 15px;
 }
 
@@ -1484,7 +1489,7 @@ p {
         padding: 11px 15px 0px 10px;
     }
     .course__name h2 {
-        font-size: 13px;
+        font-size: 17px;
     }
     .course__name p {
         font-size: 8px;
@@ -1532,14 +1537,16 @@ p {
         font-size: 25px;
     }
     .course__name h4 {
-        font-size: 8px;
+        font-size: 10px;
         padding: 0 0 2px 0;
     }
     .course__name p {
-        font-size: 7px;
+        font-size: 10px;
     }
     .course__btn a {
-        font-size: 7px;
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 13px;
     }
     .course__contain p {
         font-size: 6px;
@@ -1846,7 +1853,7 @@ p {
             height: 250px;
         }
         .course__contain p {
-            font-size: 16px;
+            font-size: 12px;
             margin-top: 5px;
         }
         .img {
@@ -1889,7 +1896,7 @@ p {
             height: 250px;
         }
         .course__contain p {
-            font-size: 16px;
+            font-size: 13px;
             margin-top: 5px;
         }
         .img {
