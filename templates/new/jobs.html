@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- CONTENT -->
+	<section class="bread">
+		<div class="container">
+			<div class="bread">
+				<a href="#!">Главная страница</a>
+				<i class="fas fa-angle-right"></i>
+				<a href="#!">Вакансии</a>
+			</div>
+		</div>
+	</section>
+	<section class="courses__web">
+		<div class="container">
+			<div class="courses__popular">
+				<div class="courses__popular_title">
+					<h2>Вакансии</h2>
+				</div>
+				<div class="courses__popular__items">
+					{% for vacansy in object_list %}
+					<div class="course__item">
+						<div class="course__info">
+							<div class="course__text">
+								<div class="course__name">
+									<h2>{{ vacansy.title }}</h2>
+									<h4 class="color-white">{{ vacansy.company }}</h4>
+									<p>{{ vacansy.short_description }}</p>
+								</div>
+							</div>
+							<div class="course__about" style="display: flex; justify-content: space-between;color: align-items: center;">
+								<div class="course__contain">
+									<p><i class="far fa-clock"></i>{{ vacansy.date }}</p>
+									<p> {{ vacansy.salary }} KZT</p>
+								</div>
+								<div class="course__btn">
+									<a href="{% url 'vacansy' vacansy.pk %}">Откликнуться</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- CONTENT -->
+
+{% endblock %}

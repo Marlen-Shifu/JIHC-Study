@@ -137,3 +137,13 @@ def logout_user(request):
 
 class About(TemplateView):
     template_name = 'new/about-us.html'
+
+
+
+class VacansyListView(ListView):
+    model = Vacansy
+    template_name = 'new/jobs.html'
+
+class VacansyDetailView(DetailView):
+    model = Vacansy
+    template_name = 'new/inside-job.html'

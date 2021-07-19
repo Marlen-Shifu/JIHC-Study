@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- CONTENT -->
+	<header class="inside__header">
+		<div class="container">
+			<section class="bread">
+				<div class="bread">
+					<a href="{% url 'home' %}">Главная страница</a>
+					<i class="fas fa-angle-right"></i>
+					<a href="{% url 'vacansy-list' %}">Вакансии</a>
+					<i class="fas fa-angle-right"></i>
+					<a href="{% url 'vacansy' object.pk %}">{{ object.title }}</a>
+				</div>
+			</section>
+			<h2 class="inside__course-name">{{ object.title }}</h2>
+			<p class="inside__course-subtitile color-white">{{ object.company }}</p>
+			<div class="course__contain" style="display: flex; justify-content: flex-start; margin-top: 20px;">
+				<p style="color: #FFDC4E;"><i class="far fa-clock"></i>{{ object.date }}</p>
+				<p style="color: #FFDC4E;"> {{ object.salary }} KZT</p>
+			</div>
+		</div>
+	</header>
+	<div class="inside__info">
+		<div class="container__2">
+			<div class="inside__info_main" style="color: #6FFFE9">
+				<p class="contain__text">Требуемый оыт работы: 	{{ object.get_requirement_experience_display }}</p>
+				<p class="contain__text">График: {{ object.get_work_mode_display }}</p>
+				<p class="contain__text">Requirements:</p>
+				<ul style="margin-left: 20px;">
+					{% for req in object.vacansyrequirement_set.all %}
+					<li>{{ req.title }}</li>
+					{% endfor %}
+				</ul>
+				<p class="contain__text">Responsibilities:</p>
+				<ul style="margin-left: 20px;">
+					{% for res in object.vacansyresponsibility_set.all %}
+					<li>{{ res.title }}</li>
+					{% endfor %}
+				</ul>
+				<div class="course__btn" >
+						<a style="display: inline-block;  margin-top: 20px;" href="inside-job.html">Откликнуться</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<section class="same-jobs">
+		<div class="container">
+			<div class="courses__popular">
+				<div class="courses__popular_title">
+					<h2>Похожие вакансии</h2>
+				</div>
+				<div class="courses__popular__items">
+					<div class="course__item">
+						<div class="course__info">
+							<div class="course__text">
+								<div class="course__name">
+									<h2>UI/UX дизайнер</h2>
+									<h4 class="color-white">ТОО UNION SERVICE COMPANY</h4>
+									<p>Text max 100 words Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, ipsa. Quos, provident. Eligendi quisquam est officiis facilis. Voluptatibus, incidunt architecto similique beatae repudiandae quibusdam dignissimos, in sed, est natus molestiae!</p>
+								</div>
+							</div>
+							<div class="course__about" style="display: flex; justify-content: space-between;color: align-items: center;">
+								<div class="course__contain">
+									<p><i class="far fa-clock"></i>15.07.21</p>
+									<p>₸ 150.000 - 300.000 KZT</p>
+								</div>
+								<div class="course__btn">
+									<a href="inside-job.html">Откликнуться</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="course__item">
+						<div class="course__info">
+							<div class="course__text">
+								<div class="course__name">
+									<h2>Back-end разработчик</h2>
+									<h4 class="color-white">ТОО Qazaq International Holding</h4>
+									<p>Верстка сайта по разработанному дизайну. Адаптация сайта для разных носителей. Оптимизация работы сайта. Периодическое введение изменении, дополнении. Доработка и оптимизация...</p>
+								</div>
+							</div>
+							<div class="course__about" style="display: flex; justify-content: space-between;color: align-items: center;">
+								<div class="course__contain">
+									<p><i class="far fa-clock"></i>15.07.21</p>
+									<p>₸ 350.000 - 500.000 KZT</p>
+								</div>
+								<div class="course__btn">
+									<a href="inside-job.html">Откликнуться</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- CONTENT -->
+
+{% endblock %}
